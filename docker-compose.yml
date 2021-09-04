@@ -12,9 +12,6 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - 'db-data:/data'
+      - '../data:/data'
     env_file:
       - './docker.env'
-
-volumes:
-  db-data:
