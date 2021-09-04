@@ -1,6 +1,6 @@
 const config = {
 	port: process.env.port || 3000,
-	db: process.env.db || '/app/data/db.json',
+	db: process.env.db || '/data/db.json',
 };
 
 const jsonServer = require('json-server');
