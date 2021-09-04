@@ -11,5 +11,8 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(router);
 server.listen(config.port, () => {
-	console.log('JSON Server is running on port', config.port);
+	console.log(
+		`JSON Server is running version ${process.env.SERVER_VERSION} on port`,
+		config.port
+	);
 });

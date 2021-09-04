@@ -4,12 +4,17 @@ services:
     build: ../client
     ports:
       - '3003:3001'
-  db:
+    env_file:
+      - '../server/docker.env'
+
+  server:
     build: .
     ports:
       - '3000:3000'
     volumes:
       - 'db-data:/data'
+    env_file:
+      - './docker.env'
 
 volumes:
   db-data:
