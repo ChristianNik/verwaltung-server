@@ -1,27 +1,15 @@
-const express = require('express');
-const app = express();
-const port = 3002;
-const path = require('path');
+const config = {
+	port: process.env.port || 3000,
+	db: process.env.db || '/data/db.json',
+};
 
-// app.get('/', (req, res) => {
-// 	res.send('Hello World!');
-// });
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router(config.db);
+const middlewares = jsonServer.defaults();
 
-app.use(
-	express.static(
-		'/home/christian/Dokumente/P/Projekte/verwaltungs-software/client/dist'
-	)
-);
-// Client - React App
-app.get('/*', (req, res) => {
-	res.sendFile(
-		path.join(
-			'/home/christian/Dokumente/P/Projekte/verwaltungs-software/client/dist',
-			'index.html'
-		)
-	);
-});
-
-app.listen(port, () => {
-	console.log(`Example app listening at http://localhost:${port}`);
+server.use(middlewares);
+server.use(router);
+server.listen(config.port, () => {
+	console.log('JSON Server is running on port', config.port);
 });
