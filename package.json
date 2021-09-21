@@ -5,7 +5,7 @@
 	"main": "server.js",
 	"scripts": {
 		"start": "node ./server.js",
-		"dev": "json-server --watch ../app/data/db.json -H 192.168.178.20",
+		"dev": "json-server --id _id --watch ../app/data/db.json -H 192.168.178.20",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dockerBuild": "docker build . -t chnikel/item-manager-server",
 		"dockerStart": "docker run -p 3000:3000 -it chnikel/item-manager-server"
